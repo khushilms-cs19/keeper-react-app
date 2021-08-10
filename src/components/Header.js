@@ -2,11 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
+//Icons 
+import HighlightIcon from '@material-ui/icons/Highlight';
+
 function Header(){
     return (
         <>
             <Top>
-                <KeeperIcon src="images/Google-keep.svg"/>
+                <div style={{paddingLeft:"50px"}}>
+                    <HighlightIcon fontSize="large"/>
+                </div>
                 <span>Keeper</span>
             </Top>
         </>
@@ -34,7 +39,7 @@ const Top = styled.div`
         font-family: "Montserrat", sans-serif;
         font-size: 3rem;
         font-weight: 700;
-        padding: 0 3rem;
+        padding: 0 2rem;
     }
 `;
 

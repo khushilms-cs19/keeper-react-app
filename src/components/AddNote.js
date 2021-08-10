@@ -7,6 +7,7 @@ import NoteAddRoundedIcon from '@material-ui/icons/NoteAddRounded';
 function AddNote(props) {
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
+    const [clicked, setClicked] = useState(false);
 
 
     function handleTitleChange(event){
@@ -43,15 +44,23 @@ function AddNote(props) {
         setNoteTitle("");
         setNoteContent("");
     }
+    function clickedInputArea(){
+        document.getElementsByClassName("content")[0].placeholder="Enter the content here.";
+        setClicked(true);
+    }
 
     return (
         <NoteToAdd>
-            <input className="title" placeholder="Title..." onChange={handleTitleChange} value={noteTitle}/>
+            {clicked &&             
+                <input className="title" placeholder="Title..." onChange={handleTitleChange} value={noteTitle}/>
+            }
             <div>
-                <textarea rows="5" cols="32" name="content"  className="content" placeholder="Enter the content here" onChange={handleContentChange} value={noteContent}></textarea>
-                <button onClick={addTheNote}>
-                    <NoteAddRoundedIcon fontSize="large"/>
-                </button>
+                <textarea rows={clicked?5:1} cols="32" name="content" id="txtArea" className="content" placeholder="Tap here to add note." onChange={handleContentChange} onClick={clickedInputArea} value={noteContent}></textarea>
+                {clicked &&   
+                    <button onClick={addTheNote}>
+                        <NoteAddRoundedIcon fontSize="large"/>
+                    </button>
+                }
             </div>
         </NoteToAdd>
     )
@@ -60,12 +69,11 @@ function AddNote(props) {
 const NoteToAdd = styled.div`
     width: 23rem;
     gap: 10px;
-    height: 180px;
+    height: auto;
     background-color: white;
     margin: 2rem auto;
     padding: 10px 20px;
     border-radius: 10px;
-    min-height: 100px;
     font-family: Arial, Helvetica, sans-serif;
     input{
         padding: 10px 0px;
