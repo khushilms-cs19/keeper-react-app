@@ -55,6 +55,9 @@ const OneNote = styled.div`
             float: right;
             margin-top: 0%;
         }
+    button:hover{
+        color: grey;
+    }    
 `;
 
 

@@ -10,18 +10,30 @@ function AddNote(props) {
 
 
     function handleTitleChange(event){
+        document.getElementsByClassName("title")[0].placeholder="Title...";
         setNoteTitle(event.target.value);
     }
 
     function handleContentChange(event){
+        document.getElementsByClassName("content")[0].placeholder="Enter the content here";
         setNoteContent(event.target.value);
     }
     function addTheNote(){
         if(noteTitle===""){
-            return alert("Title is missing!!\nPlease add the Title.");
+            document.getElementsByClassName("title")[0].style.border="2px solid red";
+            document.getElementsByClassName("title")[0].placeholder="Please enter a Title..";
+            setTimeout(()=>{
+                document.getElementsByClassName("title")[0].style.border="none";
+            },1000)
+            return;
         }
         if(noteContent===""){
-            return alert("Content is missing!!\nPlease add the Content.");
+            document.getElementsByClassName("content")[0].style.border="2px solid red";
+            document.getElementsByClassName("content")[0].placeholder="Please enter some content.";
+            setTimeout(()=>{
+                document.getElementsByClassName("content")[0].style.border="none";
+            },1000);
+            return;
         }
         props.addNote([...props.allNotes,{
             key: (props.allNotes[-1]? props.allNotes[-1].key+1:0),
@@ -36,7 +48,7 @@ function AddNote(props) {
         <NoteToAdd>
             <input className="title" placeholder="Title..." onChange={handleTitleChange} value={noteTitle}/>
             <div>
-                <textarea rows="5" cols="32" name="content" placeholder="Enter the content here" onChange={handleContentChange} value={noteContent}></textarea>
+                <textarea rows="5" cols="32" name="content"  className="content" placeholder="Enter the content here" onChange={handleContentChange} value={noteContent}></textarea>
                 <button onClick={addTheNote}>
                     <NoteAddRoundedIcon fontSize="large"/>
                 </button>
@@ -90,6 +102,9 @@ const NoteToAdd = styled.div`
             color: #f5ba13;
             float: right;
             margin-top: 0%;
+        }
+        button:hover{
+            color: grey;
         }
     }
 `;
