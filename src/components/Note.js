@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 
+//Icons 
+import DeleteIcon from '@material-ui/icons/Delete';
+
+
 function Note(props) {
 
     function deleteTheNote(){
@@ -11,7 +15,9 @@ function Note(props) {
     return (
         <OneNote>
             <img src="images/pushpin.svg" width="40px" styles="float: left;"/>
-            <button onClick={deleteTheNote}>&times;</button>
+            <button onClick={deleteTheNote}>
+                <DeleteIcon fontSize="large"/>
+            </button>
             <h3>{props.title}</h3>
             <p>{props.content}</p>
         </OneNote>
@@ -42,10 +48,10 @@ const OneNote = styled.div`
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background-color: #f5ba13;
+            background-color: #fffee0;
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 30px;
-            color: grey;
+            font-size: larger;
+            color: #f5ba13;
             float: right;
             margin-top: 0%;
         }

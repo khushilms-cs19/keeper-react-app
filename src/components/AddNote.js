@@ -1,6 +1,9 @@
 import React,{useState} from 'react';
 import styled from 'styled-components';
 
+//Icons 
+import NoteAddRoundedIcon from '@material-ui/icons/NoteAddRounded';
+
 function AddNote(props) {
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
@@ -18,7 +21,7 @@ function AddNote(props) {
             return alert("Title is missing!!\nPlease add the Title.");
         }
         if(noteContent===""){
-            return alert("Content is missing!!\n Please add the Content.");
+            return alert("Content is missing!!\nPlease add the Content.");
         }
         props.addNote([...props.allNotes,{
             key: (props.allNotes[-1]? props.allNotes[-1].key+1:0),
@@ -34,7 +37,9 @@ function AddNote(props) {
             <input className="title" placeholder="Title..." onChange={handleTitleChange} value={noteTitle}/>
             <div>
                 <textarea rows="5" cols="32" name="content" placeholder="Enter the content here" onChange={handleContentChange} value={noteContent}></textarea>
-                <button onClick={addTheNote}>+</button>
+                <button onClick={addTheNote}>
+                    <NoteAddRoundedIcon fontSize="large"/>
+                </button>
             </div>
         </NoteToAdd>
     )
@@ -79,10 +84,10 @@ const NoteToAdd = styled.div`
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: #f5ba13;
+            background-color: white;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 30px;
-            color: grey;
+            color: #f5ba13;
             float: right;
             margin-top: 0%;
         }
