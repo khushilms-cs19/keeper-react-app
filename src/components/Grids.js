@@ -35,6 +35,7 @@ const Grid = styled.div`
     flex-wrap: wrap;
     gap: 30px;
     overflow: auto;
+    width: 95%;
     height: 40%;
     position: fixed;
     padding: 20px;

@@ -14,6 +14,12 @@ function AddNote(props) {
         setNoteContent(event.target.value);
     }
     function addTheNote(){
+        if(noteTitle===""){
+            return alert("Title is missing!!\nPlease add the Title.");
+        }
+        if(noteContent===""){
+            return alert("Content is missing!!\n Please add the Content.");
+        }
         props.addNote([...props.allNotes,{
             key: (props.allNotes[-1]? props.allNotes[-1].key+1:0),
             title: noteTitle,
